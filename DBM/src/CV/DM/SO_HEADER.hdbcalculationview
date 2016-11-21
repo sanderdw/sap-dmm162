@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="DM::SO_HEADER" applyPrivilegeType="NONE" dataCategory="CUBE" dimensionType="" schemaVersion="3.0" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="SO_HEADER"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SOH.Header">
+    <resourceUri>SOH.Header</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="SOH.Header">
+  <attributes>
+    <attribute id="BILLINGSTATUS" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLINGSTATUS"/>
+      <keyMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="BILLINGSTATUS"/>
+    </attribute>
+    <attribute id="CURRENCY" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY"/>
+      <keyMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="CURRENCY"/>
+    </attribute>
+    <attribute id="DELIVERYSTATUS" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERYSTATUS"/>
+      <keyMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="DELIVERYSTATUS"/>
+    </attribute>
+    <attribute id="LIFECYCLESTATUS" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LIFECYCLESTATUS"/>
+      <keyMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="LIFECYCLESTATUS"/>
+    </attribute>
+    <attribute id="NOTEID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOTEID"/>
+      <keyMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="NOTEID"/>
+    </attribute>
+    <attribute id="PARTNER_PARTNERID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER_PARTNERID"/>
+      <keyMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="PARTNER.PARTNERID"/>
+    </attribute>
+    <attribute id="SALESORDERID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SALESORDERID"/>
+      <keyMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="SALESORDERID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="GROSSAMOUNT" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GROSSAMOUNT"/>
+      <measureMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="GROSSAMOUNT"/>
+    </measure>
+    <measure id="HISTORY_CHANGEDAT" order="9" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="HISTORY_CHANGEDAT"/>
+      <measureMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="HISTORY.CHANGEDAT"/>
+    </measure>
+    <measure id="HISTORY_CREATEDAT" order="10" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="HISTORY_CREATEDAT"/>
+      <measureMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="HISTORY.CREATEDAT"/>
+    </measure>
+    <measure id="NETAMOUNT" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NETAMOUNT"/>
+      <measureMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="NETAMOUNT"/>
+    </measure>
+    <measure id="TAXAMOUNT" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TAXAMOUNT"/>
+      <measureMapping schemaName="NGUX26SWABW4H8HV_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="TAXAMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

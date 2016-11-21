@@ -1,0 +1,15 @@
+PROCEDURE "STG2SHN::SHINE_TRUNCATE_ALL"
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER
+	AS
+BEGIN
+	truncate table "MAP::ADDR_MAP";
+	truncate table "MD.Addresses";
+	truncate table "MD.BusinessPartner";
+	truncate table "MD.Employees";
+	truncate table "MD.Products";
+	truncate table "SOH.Header";
+	truncate table "SOI.Item";
+	commit;
+END;
+

@@ -1,0 +1,12 @@
+namespace STAGING;
+entity SNWD_SO_SL {
+   key LOGSYS: String(10) default '000';
+   key NODE_KEY: Binary(16);
+   PARENT_KEY: Binary(16);
+   QUANTITY: Decimal(13,3) default 0 not null;
+   QUANTITY_UNIT: String(3) default '' not null;
+   DELIVERY_DATE: Decimal(21,7) default 0 not null;
+   _DATAAGING: String(8) default '00000000' not null;
+} technical configuration {
+   column store;
+};

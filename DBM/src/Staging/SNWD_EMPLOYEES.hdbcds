@@ -1,0 +1,29 @@
+namespace STAGING;
+entity SNWD_EMPLOYEES {
+   key LOGSYS: String(10) default '000';
+   key NODE_KEY: Binary(16);
+   PARENT_KEY: Binary(16);
+   EMPLOYEE_ID: String(10) default '' not null;
+   FIRST_NAME: String(40) default '' not null;
+   MIDDLE_NAME: String(40) default '' not null;
+   LAST_NAME: String(40) default '' not null;
+   INITIALS: String(10) default '' not null;
+   SEX: String(1) default '' not null;
+   LANGUAGE: String(1) default '' not null;
+   PHONE_NUMBER: String(30) default '' not null;
+   FAX_NUMBER: String(30) default '' not null;
+   MOBILE_NUMBER: String(30) default '' not null;
+   EMAIL_ADDRESS: String(255) default '' not null;
+   LOGIN_NAME: String(12) default '' not null;
+   PR_ADDRESS_GUID: Binary(16);
+   VAL_START_DATE: String(8) default '00000000' not null;
+   VAL_END_DATE: String(8) default '00000000' not null;
+   CURRENCY: String(5) default '' not null;
+   SALARY_AMOUNT: Decimal(15,2) default 0 not null;
+   ACCOUNT_NUMBER: String(10) default '' not null;
+   BANK_ID: String(10) default '' not null;
+   BANK_NAME: String(255) default '' not null;
+   EMPLOYEE_PIC_URL: String(255) default '' not null;
+} technical configuration {
+   column store;
+};

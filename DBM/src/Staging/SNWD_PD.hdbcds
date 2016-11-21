@@ -1,0 +1,29 @@
+namespace STAGING;
+entity SNWD_PD {
+   key LOGSYS: String(10) default '000';
+   key NODE_KEY: Binary(16);
+   PRODUCT_ID: String(10) default '' not null;
+   TYPE_CODE: String(2) default '' not null;
+   CATEGORY: String(40) default '' not null;
+   CREATED_BY: Binary(16);
+   CREATED_AT: Decimal(21,7) default 0 not null;
+   CHANGED_BY: Binary(16);
+   CHANGED_AT: Decimal(21,7) default 0 not null;
+   NAME_GUID: Binary(16);
+   DESC_GUID: Binary(16);
+   SUPPLIER_GUID: Binary(16);
+   TAX_TARIF_CODE: Integer default 0 not null;
+   MEASURE_UNIT: String(3) default '' not null;
+   WEIGHT_MEASURE: Decimal(13,3) default 0 not null;
+   WEIGHT_UNIT: String(3) default '' not null;
+   CURRENCY_CODE: String(5) default '' not null;
+   PRICE: Decimal(15,2) default 0 not null;
+   PRODUCT_PIC_URL: String(255) default '' not null;
+   WIDTH: Decimal(13,3) default 0 not null;
+   DEPTH: Decimal(13,3) default 0 not null;
+   HEIGHT: Decimal(13,3) default 0 not null;
+   DIM_UNIT: String(3) default '' not null;
+   DUMMY_FIELD_PD: String(1) default '' not null;
+} technical configuration {
+   column store;
+};

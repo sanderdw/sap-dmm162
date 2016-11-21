@@ -1,0 +1,34 @@
+using EPM;
+using MD;
+context SOI {
+   // Constants
+
+   // Types
+
+   // Structured Types
+
+   // Entities
+   entity Item {
+      key SALESORDERID: EPM.BusinessKey;
+      key SALESORDERITEM: EPM.BusinessKey;
+      PRODUCT: Association to MD.Products;
+      NOTEID: EPM.BusinessKey;
+      CURRENCY: EPM.CurrencyT;
+      GROSSAMOUNT: EPM.AmountT;
+      NETAMOUNT: EPM.AmountT;
+      TAXAMOUNT: EPM.AmountT;
+      ITEMATPSTATUS: String(1);
+      OPITEMPOS: EPM.BusinessKey;
+      QUANTITY: EPM.QuantityT;
+      QUANTITYUNIT: EPM.UnitT;
+      DELIVERYDATE: EPM.SDate;
+   } technical configuration {
+      column store;
+   };
+
+
+   // Views
+
+   // Inner Contexts
+
+};

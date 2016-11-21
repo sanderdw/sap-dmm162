@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="VT_DM::SO_HEADER" applyPrivilegeType="NONE" dataCategory="CUBE" dimensionType="" schemaVersion="3.0" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="true">
+<descriptions defaultDescription="SO_HEADER"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SRC.FILE::SNWD_SO">
+    <resourceUri>SRC.FILE::SNWD_SO</resourceUri>
+  </DataSource>
+  <DataSource id="SRC.FILE::SNWD_EMPLOYEES">
+    <resourceUri>SRC.FILE::SNWD_EMPLOYEES</resourceUri>
+  </DataSource>
+  <DataSource id="SRC.FILE::SNWD_BPA">
+    <resourceUri>SRC.FILE::SNWD_BPA</resourceUri>
+  </DataSource>
+  <DataSource id="Join_Empl2$$$$SRC.FILE::SNWD_EMPLOYEES$$">
+    <resourceUri>SRC.FILE::SNWD_EMPLOYEES</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_Employees" joinType="leftOuter" cardinality="CN_N">
+    <viewAttributes>
+      <viewAttribute id="SO_ID"><descriptions/>
+        <descriptions defaultDescription="SO_ID"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_AT"><descriptions/>
+        <descriptions defaultDescription="CHANGED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_BY"><descriptions/>
+        <descriptions defaultDescription="CREATED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_BY_BP"><descriptions/>
+        <descriptions defaultDescription="CREATED_BY_BP"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_AT"><descriptions/>
+        <descriptions defaultDescription="CREATED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_BY_BP"><descriptions/>
+        <descriptions defaultDescription="CHANGED_BY_BP"/>
+      </viewAttribute>
+      <viewAttribute id="NOTE_GUID"><descriptions/>
+        <descriptions defaultDescription="NOTE_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="BUYER_GUID"><descriptions/>
+        <descriptions defaultDescription="BUYER_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="GROSS_AMOUNT"><descriptions/>
+        <descriptions defaultDescription="GROSS_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="NET_AMOUNT"><descriptions/>
+        <descriptions defaultDescription="NET_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE_1"><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE_1"/>
+      </viewAttribute>
+      <viewAttribute id="LIFECYCLE_STATUS"><descriptions/>
+        <descriptions defaultDescription="LIFECYCLE_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="BILLING_STATUS"><descriptions/>
+        <descriptions defaultDescription="BILLING_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="DELIVERY_STATUS"><descriptions/>
+        <descriptions defaultDescription="DELIVERY_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="_DATAAGING"><descriptions/>
+        <descriptions defaultDescription="_DATAAGING"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID"><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_BY"><descriptions/>
+        <descriptions defaultDescription="CHANGED_BY"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SRC.FILE::SNWD_SO">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ID" source="SO_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_AT" source="CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY_BP" source="CREATED_BY_BP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY_BP" source="CHANGED_BY_BP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOTE_GUID" source="NOTE_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUYER_GUID" source="BUYER_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROSS_AMOUNT" source="GROSS_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NET_AMOUNT" source="NET_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE_1" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIFECYCLE_STATUS" source="LIFECYCLE_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLING_STATUS" source="BILLING_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_STATUS" source="DELIVERY_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+    </input>
+    <input node="SRC.FILE::SNWD_EMPLOYEES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="NODE_KEY"/>
+    </input>
+    <joinAttribute name="CREATED_BY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_BPA" joinType="leftOuter" cardinality="CN_N">
+    <viewAttributes>
+      <viewAttribute id="BP_ID"><descriptions/>
+        <descriptions defaultDescription="BP_ID"/>
+      </viewAttribute>
+      <viewAttribute id="SO_ID"><descriptions/>
+        <descriptions defaultDescription="SO_ID"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_AT"><descriptions/>
+        <descriptions defaultDescription="CHANGED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_BY"><descriptions/>
+        <descriptions defaultDescription="CREATED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_BY_BP"><descriptions/>
+        <descriptions defaultDescription="CREATED_BY_BP"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_AT"><descriptions/>
+        <descriptions defaultDescription="CREATED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_BY_BP"><descriptions/>
+        <descriptions defaultDescription="CHANGED_BY_BP"/>
+      </viewAttribute>
+      <viewAttribute id="NOTE_GUID"><descriptions/>
+        <descriptions defaultDescription="NOTE_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="BUYER_GUID"><descriptions/>
+        <descriptions defaultDescription="BUYER_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="GROSS_AMOUNT"><descriptions/>
+        <descriptions defaultDescription="GROSS_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="NET_AMOUNT"><descriptions/>
+        <descriptions defaultDescription="NET_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE_1"><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE_1"/>
+      </viewAttribute>
+      <viewAttribute id="LIFECYCLE_STATUS"><descriptions/>
+        <descriptions defaultDescription="LIFECYCLE_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="BILLING_STATUS"><descriptions/>
+        <descriptions defaultDescription="BILLING_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="DELIVERY_STATUS"><descriptions/>
+        <descriptions defaultDescription="DELIVERY_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="_DATAAGING"><descriptions/>
+        <descriptions defaultDescription="_DATAAGING"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID"><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID_1"><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID_1"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_BY"><descriptions/>
+        <descriptions defaultDescription="CHANGED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="JOIN$NODE_KEY$BUYER_GUID" hidden="true"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SRC.FILE::SNWD_BPA">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BP_ID" source="BP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$NODE_KEY$BUYER_GUID" source="NODE_KEY"/>
+    </input>
+    <input node="Join_Empl2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ID" source="SO_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_AT" source="CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY_BP" source="CREATED_BY_BP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY_BP" source="CHANGED_BY_BP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOTE_GUID" source="NOTE_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUYER_GUID" source="BUYER_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROSS_AMOUNT" source="GROSS_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NET_AMOUNT" source="NET_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE_1" source="CURRENCY_CODE_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIFECYCLE_STATUS" source="LIFECYCLE_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLING_STATUS" source="BILLING_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_STATUS" source="DELIVERY_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$NODE_KEY$BUYER_GUID" source="BUYER_GUID"/>
+    </input>
+    <joinAttribute name="JOIN$NODE_KEY$BUYER_GUID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_Empl2" joinType="leftOuter" cardinality="CN_N">
+    <viewAttributes>
+      <viewAttribute id="SO_ID"><descriptions/>
+        <descriptions defaultDescription="SO_ID"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_AT"><descriptions/>
+        <descriptions defaultDescription="CHANGED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_BY"><descriptions/>
+        <descriptions defaultDescription="CREATED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_BY_BP"><descriptions/>
+        <descriptions defaultDescription="CREATED_BY_BP"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_AT"><descriptions/>
+        <descriptions defaultDescription="CREATED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_BY_BP"><descriptions/>
+        <descriptions defaultDescription="CHANGED_BY_BP"/>
+      </viewAttribute>
+      <viewAttribute id="NOTE_GUID"><descriptions/>
+        <descriptions defaultDescription="NOTE_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="BUYER_GUID"><descriptions/>
+        <descriptions defaultDescription="BUYER_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="GROSS_AMOUNT"><descriptions/>
+        <descriptions defaultDescription="GROSS_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="NET_AMOUNT"><descriptions/>
+        <descriptions defaultDescription="NET_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE_1"><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE_1"/>
+      </viewAttribute>
+      <viewAttribute id="LIFECYCLE_STATUS"><descriptions/>
+        <descriptions defaultDescription="LIFECYCLE_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="BILLING_STATUS"><descriptions/>
+        <descriptions defaultDescription="BILLING_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="DELIVERY_STATUS"><descriptions/>
+        <descriptions defaultDescription="DELIVERY_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="_DATAAGING"><descriptions/>
+        <descriptions defaultDescription="_DATAAGING"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID"><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID_1"><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID_1"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_BY"><descriptions/>
+        <descriptions defaultDescription="CHANGED_BY"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_Employees">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ID" source="SO_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_AT" source="CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY_BP" source="CREATED_BY_BP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY_BP" source="CHANGED_BY_BP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOTE_GUID" source="NOTE_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BUYER_GUID" source="BUYER_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROSS_AMOUNT" source="GROSS_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NET_AMOUNT" source="NET_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE_1" source="CURRENCY_CODE_1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIFECYCLE_STATUS" source="LIFECYCLE_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLING_STATUS" source="BILLING_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_STATUS" source="DELIVERY_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="_DATAAGING" source="_DATAAGING"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+    </input>
+    <input node="Join_Empl2$$$$SRC.FILE::SNWD_EMPLOYEES$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="NODE_KEY"/>
+    </input>
+    <joinAttribute name="CHANGED_BY"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_BPA">
+  <attributes>
+    <attribute id="BP_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_ID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="BP_ID"/>
+    </attribute>
+    <attribute id="SO_ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SO_ID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="SO_ID"/>
+    </attribute>
+    <attribute id="CREATED_BY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_BY"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CREATED_BY"/>
+    </attribute>
+    <attribute id="CREATED_BY_BP" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_BY_BP"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CREATED_BY_BP"/>
+    </attribute>
+    <attribute id="CHANGED_BY_BP" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_BY_BP"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CHANGED_BY_BP"/>
+    </attribute>
+    <attribute id="NOTE_GUID" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOTE_GUID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="NOTE_GUID"/>
+    </attribute>
+    <attribute id="BUYER_GUID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BUYER_GUID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="BUYER_GUID"/>
+    </attribute>
+    <attribute id="CURRENCY_CODE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY_CODE"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CURRENCY_CODE"/>
+    </attribute>
+    <attribute id="CURRENCY_CODE_1" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY_CODE_1"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CURRENCY_CODE_1"/>
+    </attribute>
+    <attribute id="LIFECYCLE_STATUS" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LIFECYCLE_STATUS"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="LIFECYCLE_STATUS"/>
+    </attribute>
+    <attribute id="BILLING_STATUS" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLING_STATUS"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="BILLING_STATUS"/>
+    </attribute>
+    <attribute id="DELIVERY_STATUS" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERY_STATUS"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="DELIVERY_STATUS"/>
+    </attribute>
+    <attribute id="_DATAAGING" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="_DATAAGING"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="_DATAAGING"/>
+    </attribute>
+    <attribute id="EMPLOYEE_ID" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_ID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="EMPLOYEE_ID"/>
+    </attribute>
+    <attribute id="EMPLOYEE_ID_1" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_ID_1"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="EMPLOYEE_ID_1"/>
+    </attribute>
+    <attribute id="CHANGED_BY" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_BY"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CHANGED_BY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CHANGED_AT" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CHANGED_AT"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="CHANGED_AT"/>
+    </measure>
+    <measure id="CREATED_AT" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CREATED_AT"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="CREATED_AT"/>
+    </measure>
+    <measure id="GROSS_AMOUNT" order="11" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="GROSS_AMOUNT"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="GROSS_AMOUNT"/>
+    </measure>
+    <measure id="NET_AMOUNT" order="12" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="NET_AMOUNT"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="NET_AMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_Employees" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="82" y="276"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_BPA" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="58" y="193"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_Empl2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="98" y="346"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>   

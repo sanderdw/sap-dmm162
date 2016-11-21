@@ -1,0 +1,18 @@
+PROCEDURE "SRC2STG::STAGING_TRUNCATE_ALL"
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER
+	AS
+BEGIN
+	truncate table "STAGING::SNWD_AD";
+	truncate table "STAGING::SNWD_BPA";
+	truncate table "STAGING::SNWD_EMPLOYEES";
+	truncate table "STAGING::SNWD_PD";
+	truncate table "STAGING::SNWD_PD_CATGOS";
+	truncate table "STAGING::SNWD_SO";
+	truncate table "STAGING::SNWD_SO_I";
+	truncate table "STAGING::SNWD_SO_SL";
+	truncate table "STAGING::SNWD_TEXTS";
+	truncate table "STAGING::SNWD_TEXT_KEY";
+	commit;
+END;
+

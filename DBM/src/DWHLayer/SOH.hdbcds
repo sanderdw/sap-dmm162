@@ -1,0 +1,34 @@
+using EPM;
+using SOI;
+using MD;
+context SOH {
+   // Constants
+
+   // Types
+
+   // Structured Types
+
+   // Entities
+   entity Header {
+      key SALESORDERID: EPM.BusinessKey;
+      ITEMS: Association[*] to SOI.Item on ITEMS.SALESORDERID = SALESORDERID;
+      NOTEID: EPM.BusinessKey;
+      CURRENCY: EPM.CurrencyT;
+      GROSSAMOUNT: EPM.AmountT;
+      NETAMOUNT: EPM.AmountT;
+      TAXAMOUNT: EPM.AmountT;
+      LIFECYCLESTATUS: EPM.StatusT;
+      BILLINGSTATUS: EPM.StatusT;
+      DELIVERYSTATUS: EPM.StatusT;
+      HISTORY: MD.HistT;
+      PARTNER: Association to MD.BusinessPartner;
+   } technical configuration {
+      column store;
+   };
+
+
+   // Views
+
+   // Inner Contexts
+
+};

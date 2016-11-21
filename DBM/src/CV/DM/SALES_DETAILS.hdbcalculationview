@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DM::SALES_DETAILS" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="DIMENSION" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" applyPrivilegeType="NONE">
+<origin/>  
+  <descriptions defaultDescription="SALES_DETAILS"/>
+  <metadata changedAt="2015-04-24 16:05:08.851"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SOH.Header">
+      <resourceUri>SOH.Header</resourceUri>
+    </DataSource>
+    <DataSource id="SOI.Item">
+      <resourceUri>SOI.Item</resourceUri>
+    </DataSource>
+    <DataSource id="MD.Products">
+      <resourceUri>MD.Products</resourceUri>
+    </DataSource>
+    <DataSource id="MD.BusinessPartner">
+      <resourceUri>MD.BusinessPartner</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews>
+    <calculationView xsi:type="Calculation:JoinView" id="Sales" joinType="inner">
+      <viewAttributes>
+        <viewAttribute id="SALESORDERID"/>
+        <viewAttribute id="History_CREATEDAT"/>
+        <viewAttribute id="NETAMOUNT"/>
+        <viewAttribute id="SALESORDERITEM"/>
+        <viewAttribute id="PRODUCTID"/>
+      
+        <viewAttribute id="PARTNER_PARTNERID">
+          <descriptions defaultDescription="PARTNER_PARTNERID"/>
+        </viewAttribute>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="SOH.Header">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERID" source="SALESORDERID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="History_CREATEDAT" source="HISTORY.CREATEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT" source="NETAMOUNT"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_PARTNERID" source="PARTNER.PARTNERID"/>
+      </input>
+      <input node="SOI.Item">
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERITEM" source="SALESORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCT.PRODUCTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERID" source="SALESORDERID"/>
+      </input>
+      <joinAttribute name="SALESORDERID"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Products" joinType="inner">
+      <viewAttributes>
+        <viewAttribute id="PRODUCTID"/>
+        <viewAttribute id="SALESORDERITEM"/>
+        <viewAttribute id="NETAMOUNT"/>
+        <viewAttribute id="History_CREATEDAT"/>
+        <viewAttribute id="SALESORDERID"/>
+        <viewAttribute id="CATEGORY"/>
+      
+        <viewAttribute id="PARTNER_PARTNERID">
+          <descriptions defaultDescription="PARTNER_PARTNERID"/>
+        </viewAttribute>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="Sales">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERITEM" source="SALESORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT" source="NETAMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="History_CREATEDAT" source="History_CREATEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERID" source="SALESORDERID"/>
+      
+        <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_PARTNERID" source="PARTNER_PARTNERID"/>
+      </input>
+      <input node="MD.Products">
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCTID"/>
+      </input>
+      <joinAttribute name="PRODUCTID"/>
+    </calculationView>
+    <calculationView xsi:type="Calculation:JoinView" id="Partner" joinType="inner">
+      <viewAttributes>
+        <viewAttribute id="PRODUCTID">
+          <descriptions defaultDescription="PRODUCTID"/>
+        </viewAttribute>
+        <viewAttribute id="SALESORDERITEM">
+          <descriptions defaultDescription="SALESORDERITEM"/>
+        </viewAttribute>
+        <viewAttribute id="NETAMOUNT">
+          <descriptions defaultDescription="NETAMOUNT"/>
+        </viewAttribute>
+        <viewAttribute id="History_CREATEDAT">
+          <descriptions defaultDescription="History_CREATEDAT"/>
+        </viewAttribute>
+        <viewAttribute id="SALESORDERID">
+          <descriptions defaultDescription="SALESORDERID"/>
+        </viewAttribute>
+        <viewAttribute id="CATEGORY">
+          <descriptions defaultDescription="CATEGORY"/>
+        </viewAttribute>
+        <viewAttribute id="COMPANYNAME">
+          <descriptions defaultDescription="COMPANYNAME"/>
+        </viewAttribute>
+        <viewAttribute id="JOIN$PARTNER_PARTNERID$PARTNERID" hidden="true"/>
+      </viewAttributes>
+      <calculatedViewAttributes/>
+      <input node="Products">
+        <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCTID" source="PRODUCTID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERITEM" source="SALESORDERITEM"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT" source="NETAMOUNT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="History_CREATEDAT" source="History_CREATEDAT"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="SALESORDERID" source="SALESORDERID"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PARTNER_PARTNERID$PARTNERID" source="PARTNER_PARTNERID"/>
+      </input>
+      <input node="MD.BusinessPartner">
+        <mapping xsi:type="Calculation:AttributeMapping" target="COMPANYNAME" source="COMPANYNAME"/>
+        <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PARTNER_PARTNERID$PARTNERID" source="PARTNERID"/>
+      </input>
+      <joinAttribute name="JOIN$PARTNER_PARTNERID$PARTNERID"/>
+    </calculationView>
+  </calculationViews>
+  <logicalModel id="Partner">
+    <attributes>
+      <attribute id="ITEM" order="1" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALESORDERITEM"/>
+        <keyMapping columnObjectName="Partner" columnName="SALESORDERITEM"/>
+      </attribute>
+      <attribute id="CREATED_AT" order="2" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="HISTORY_CREATEDAT"/>
+        <keyMapping columnObjectName="Partner" columnName="History_CREATEDAT"/>
+      </attribute>
+      <attribute id="ORDER" order="3" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="SALESORDERID"/>
+        <keyMapping columnObjectName="Partner" columnName="SALESORDERID"/>
+      </attribute>
+      <attribute id="PRODUCT_CATEGORY" order="4" attributeHierarchyActive="false" displayAttribute="false">
+        <descriptions defaultDescription="CATEGORY"/>
+        <keyMapping columnObjectName="Partner" columnName="CATEGORY"/>
+      </attribute>
+    
+      <attribute id="COMPANYNAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="COMPANYNAME"/>
+        <keyMapping columnObjectName="Partner" columnName="COMPANYNAME"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/></shape>
+      <shape expanded="true" modelObjectName="Sales" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="40" y="330"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+      <shape expanded="true" modelObjectName="Products" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="30" y="220"/>
+        <rectangleSize height="-1" width="-1"/>
+      </shape>
+    
+      <shape expanded="true" modelObjectName="Partner" modelObjectNameSpace="CalculationView">
+        <upperLeftCorner x="88" y="227"/>
+        <rectangleSize height="30" width="140"/>
+      </shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>  

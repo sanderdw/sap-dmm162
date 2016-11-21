@@ -1,0 +1,1 @@
+{ "SRC.FILE::SNWD_TEXTS" : { "target" : { "remote" : "LOCAL_FLATFILE_1", "database" : "<NULL>", "schema" : "<NULL>", "object" : "snwd_texts.csv" } } } 

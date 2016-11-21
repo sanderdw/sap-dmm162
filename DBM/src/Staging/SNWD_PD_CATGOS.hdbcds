@@ -1,0 +1,8 @@
+namespace STAGING;
+entity SNWD_PD_CATGOS {
+   key LOGSYS: String(10) default '000';
+   key CATEGORY: String(40) default '';
+   MAIN_CATEGORY: String(40) default '' not null;
+} technical configuration {
+   column store;
+};

@@ -1,0 +1,19 @@
+namespace STAGING;
+entity SNWD_SO_I {
+   key LOGSYS: String(10) default '000';
+   key NODE_KEY: Binary(16);
+   PARENT_KEY: Binary(16);
+   SO_ITEM_POS: String(10) default '' not null;
+   PRODUCT_GUID: Binary(16);
+   NOTE_GUID: Binary(16);
+   CURRENCY_CODE: String(5) default '' not null;
+   GROSS_AMOUNT: Decimal(15,2) default 0 not null;
+   NET_AMOUNT: Decimal(15,2) default 0 not null;
+   TAX_AMOUNT: Decimal(15,2) default 0 not null;
+   ITEM_ATP_STATUS: String(1) default '' not null;
+   OP_ITEM_POS: String(10) default '' not null;
+   _DATAAGING: String(8) default '00000000' not null;
+   DUMMY: String(1) default '' not null;
+} technical configuration {
+   column store;
+};

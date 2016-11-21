@@ -1,0 +1,16 @@
+PROCEDURE "STG2SHN::E2S_LOAD_ALL"
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER
+AS
+BEGIN
+begin SEQUENTIAL EXECUTION
+	start task  "STG2SHN::E2S_ADDR_MAP" ; -- has to be loaded first, no async!!!
+end;
+	start task  "STG2SHN::E2S_MD_Addresses" ;
+	start task  "STG2SHN::E2S_MD_BusinessPartner" ;
+	start task  "STG2SHN::E2S_MD_Employees" ;	
+	start task  "STG2SHN::E2S_MD_Products" ;	
+	start task  "STG2SHN::E2S_SO_Header";	
+	start task  "STG2SHN::E2S_SO_Item" ;	
+END;
+

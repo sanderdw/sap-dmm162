@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" schemaVersion="3.0" id="DM::SO_BASIC" defaultClient="$$client$$" defaultLanguage="$$language$$" visibility="reportingEnabled" calculationScenarioType="TREE_BASED" dataCategory="CUBE" enforceSqlExecution="false" executionSemantic="UNDEFINED" outputViewType="Aggregation" applyPrivilegeType="NONE">
+<origin/>
+  <descriptions defaultDescription="SO_BASIC"/>
+  <metadata changedAt="2015-04-24 10:41:19.109"/>
+  <localVariables/>
+  <variableMappings/>
+  <dataSources>
+    <DataSource id="SOH.Header" type="DATA_BASE_TABLE">
+      <resourceUri>SOH.Header</resourceUri>
+    </DataSource>
+  </dataSources>
+  <calculationViews/>
+  <logicalModel id="SOH.Header">
+    <attributes>
+      <attribute id="SALESORDERID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="SALESORDERID"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="SALESORDERID"/>
+      </attribute>
+      <attribute id="PARTNER_PARTNERID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="PARTNER_PARTNERID"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="PARTNER.PARTNERID"/>
+      </attribute>
+      <attribute id="BILLINGSTATUS" order="3" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="BILLINGSTATUS"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="BILLINGSTATUS"/>
+      </attribute>
+      <attribute id="CURRENCY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="CURRENCY"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="CURRENCY"/>
+      </attribute>
+      <attribute id="DELIVERYSTATUS" order="5" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="DELIVERYSTATUS"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="DELIVERYSTATUS"/>
+      </attribute>
+      <attribute id="HISTORY_CHANGEDAT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="HISTORY_CHANGEDAT"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="HISTORY.CHANGEDAT"/>
+      </attribute>
+      <attribute id="HISTORY_CHANGEDBY_EMPLOYEEID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="HISTORY_CHANGEDBY_EMPLOYEEID"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="HISTORY.CHANGEDBY.EMPLOYEEID"/>
+      </attribute>
+      <attribute id="HISTORY_CREATEDAT" order="8" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="HISTORY_CREATEDAT"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="HISTORY.CREATEDAT"/>
+      </attribute>
+      <attribute id="HISTORY_CREATEDBY_EMPLOYEEID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="HISTORY_CREATEDBY_EMPLOYEEID"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="HISTORY.CREATEDBY.EMPLOYEEID"/>
+      </attribute>
+      <attribute id="LIFECYCLESTATUS" order="10" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="LIFECYCLESTATUS"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="LIFECYCLESTATUS"/>
+      </attribute>
+      <attribute id="NOTEID" order="11" displayAttribute="false" attributeHierarchyActive="false">
+        <descriptions defaultDescription="NOTEID"/>
+        <keyMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="NOTEID"/>
+      </attribute>
+    </attributes>
+    <calculatedAttributes/>
+    <privateDataFoundation>
+      <tableProxies/>
+      <joins/>
+      <layout>
+        <shapes/>
+      </layout>
+    </privateDataFoundation>
+    <baseMeasures>
+      <measure id="TAXAMOUNT" order="12" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="TAXAMOUNT"/>
+        <measureMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="TAXAMOUNT"/>
+      </measure>
+      <measure id="GROSSAMOUNT" order="13" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="GROSSAMOUNT"/>
+        <measureMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="GROSSAMOUNT"/>
+      </measure>
+      <measure id="NETAMOUNT" order="14" aggregationType="sum" measureType="simple">
+        <descriptions defaultDescription="NETAMOUNT"/>
+        <measureMapping schemaName="WERNER_UBCSBR8S9JRFK6HL_SHINE_XSA_HDI_HDI_CONTAINER" columnObjectName="SOH.Header" columnName="NETAMOUNT"/>
+      </measure>
+    </baseMeasures>
+    <calculatedMeasures/>
+    <restrictedMeasures/>
+    <localDimensions/>
+  
+    <localDimensions/>
+  </logicalModel>
+  <layout>
+    <shapes>
+      <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+        <upperLeftCorner x="40" y="85"/></shape>
+    </shapes>
+  </layout>
+</Calculation:scenario>

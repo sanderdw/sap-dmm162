@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="VT_DM::PRODUCT" applyPrivilegeType="NONE" dataCategory="CUBE" dimensionType="" schemaVersion="3.0" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="true">
+<descriptions defaultDescription="SO_PRODUCT"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SRC.FILE::SNWD_PD">
+    <resourceUri>SRC.FILE::SNWD_PD</resourceUri>
+  </DataSource>
+  <DataSource id="SRC.FILE::SNWD_EMPLOYEES">
+    <resourceUri>SRC.FILE::SNWD_EMPLOYEES</resourceUri>
+  </DataSource>
+  <DataSource id="Join_EMPL2$$$$SRC.FILE::SNWD_EMPLOYEES$$">
+    <resourceUri>SRC.FILE::SNWD_EMPLOYEES</resourceUri>
+  </DataSource>
+  <DataSource id="SRC.FILE::SNWD_BPA">
+    <resourceUri>SRC.FILE::SNWD_BPA</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_EMPL1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="CHANGED_AT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CHANGED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="WIDTH"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WIDTH"/>
+      </viewAttribute>
+      <viewAttribute id="ROWNUMBER"><descriptions/><descriptions/>
+        <descriptions defaultDescription="ROWNUMBER"/>
+      </viewAttribute>
+      <viewAttribute id="NAME_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="NAME_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="DEPTH"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DEPTH"/>
+      </viewAttribute>
+      <viewAttribute id="ERROR"><descriptions/><descriptions/>
+        <descriptions defaultDescription="ERROR"/>
+      </viewAttribute>
+      <viewAttribute id="DESC_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DESC_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="HEIGHT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="HEIGHT"/>
+      </viewAttribute>
+      <viewAttribute id="PARTITION"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PARTITION"/>
+      </viewAttribute>
+      <viewAttribute id="SUPPLIER_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="SUPPLIER_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="DIM_UNIT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DIM_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="NODE_KEY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="NODE_KEY"/>
+      </viewAttribute>
+      <viewAttribute id="TAX_TARIF_CODE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="TAX_TARIF_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="DUMMY_FIELD_PD"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DUMMY_FIELD_PD"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_ID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRODUCT_ID"/>
+      </viewAttribute>
+      <viewAttribute id="MEASURE_UNIT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="MEASURE_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="TYPE_CODE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="TYPE_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="WEIGHT_MEASURE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WEIGHT_MEASURE"/>
+      </viewAttribute>
+      <viewAttribute id="CATEGORY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CATEGORY"/>
+      </viewAttribute>
+      <viewAttribute id="WEIGHT_UNIT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WEIGHT_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_BY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CREATED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_AT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CREATED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="PRICE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRICE"/>
+      </viewAttribute>
+      <viewAttribute id="PATH"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PATH"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_BY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CHANGED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_PIC_URL"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRODUCT_PIC_URL"/>
+      </viewAttribute>
+      <viewAttribute id="NAME"><descriptions/><descriptions/>
+        <descriptions defaultDescription="NAME"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SRC.FILE::SNWD_PD">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_AT" source="CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WIDTH" source="WIDTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROWNUMBER" source="ROWNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_GUID" source="NAME_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPTH" source="DEPTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERROR" source="ERROR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESC_GUID" source="DESC_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HEIGHT" source="HEIGHT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTITION" source="PARTITION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_GUID" source="SUPPLIER_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIM_UNIT" source="DIM_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NODE_KEY" source="NODE_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAX_TARIF_CODE" source="TAX_TARIF_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY_FIELD_PD" source="DUMMY_FIELD_PD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEASURE_UNIT" source="MEASURE_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE_CODE" source="TYPE_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEIGHT_MEASURE" source="WEIGHT_MEASURE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEIGHT_UNIT" source="WEIGHT_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE" source="PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PATH" source="PATH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PIC_URL" source="PRODUCT_PIC_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+    </input>
+    <input node="SRC.FILE::SNWD_EMPLOYEES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="NODE_KEY"/>
+    </input>
+    <joinAttribute name="CREATED_BY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_EMPL2" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="CHANGED_AT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CHANGED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="WIDTH"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WIDTH"/>
+      </viewAttribute>
+      <viewAttribute id="ROWNUMBER"><descriptions/><descriptions/>
+        <descriptions defaultDescription="ROWNUMBER"/>
+      </viewAttribute>
+      <viewAttribute id="NAME_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="NAME_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="DEPTH"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DEPTH"/>
+      </viewAttribute>
+      <viewAttribute id="ERROR"><descriptions/><descriptions/>
+        <descriptions defaultDescription="ERROR"/>
+      </viewAttribute>
+      <viewAttribute id="DESC_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DESC_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="HEIGHT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="HEIGHT"/>
+      </viewAttribute>
+      <viewAttribute id="PARTITION"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PARTITION"/>
+      </viewAttribute>
+      <viewAttribute id="SUPPLIER_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="SUPPLIER_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="DIM_UNIT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DIM_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="NODE_KEY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="NODE_KEY"/>
+      </viewAttribute>
+      <viewAttribute id="TAX_TARIF_CODE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="TAX_TARIF_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="DUMMY_FIELD_PD"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DUMMY_FIELD_PD"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_ID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRODUCT_ID"/>
+      </viewAttribute>
+      <viewAttribute id="MEASURE_UNIT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="MEASURE_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="TYPE_CODE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="TYPE_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="WEIGHT_MEASURE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WEIGHT_MEASURE"/>
+      </viewAttribute>
+      <viewAttribute id="CATEGORY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CATEGORY"/>
+      </viewAttribute>
+      <viewAttribute id="WEIGHT_UNIT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WEIGHT_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_BY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CREATED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_AT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CREATED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="PRICE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRICE"/>
+      </viewAttribute>
+      <viewAttribute id="PATH"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PATH"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_BY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CHANGED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_PIC_URL"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRODUCT_PIC_URL"/>
+      </viewAttribute>
+      <viewAttribute id="NAME"><descriptions/><descriptions/>
+        <descriptions defaultDescription="NAME"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID_1"><descriptions/><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID_1"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_EMPL1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_AT" source="CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WIDTH" source="WIDTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROWNUMBER" source="ROWNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_GUID" source="NAME_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPTH" source="DEPTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERROR" source="ERROR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESC_GUID" source="DESC_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HEIGHT" source="HEIGHT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTITION" source="PARTITION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_GUID" source="SUPPLIER_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIM_UNIT" source="DIM_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NODE_KEY" source="NODE_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAX_TARIF_CODE" source="TAX_TARIF_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY_FIELD_PD" source="DUMMY_FIELD_PD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEASURE_UNIT" source="MEASURE_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE_CODE" source="TYPE_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEIGHT_MEASURE" source="WEIGHT_MEASURE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEIGHT_UNIT" source="WEIGHT_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE" source="PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PATH" source="PATH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PIC_URL" source="PRODUCT_PIC_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+    </input>
+    <input node="Join_EMPL2$$$$SRC.FILE::SNWD_EMPLOYEES$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="NODE_KEY"/>
+    </input>
+    <joinAttribute name="CHANGED_BY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_BPA" joinType="inner" cardinality="CN_N">
+    <viewAttributes>
+      <viewAttribute id="CHANGED_AT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CHANGED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="WIDTH"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WIDTH"/>
+      </viewAttribute>
+      <viewAttribute id="ROWNUMBER"><descriptions/><descriptions/>
+        <descriptions defaultDescription="ROWNUMBER"/>
+      </viewAttribute>
+      <viewAttribute id="NAME_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="NAME_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="DEPTH"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DEPTH"/>
+      </viewAttribute>
+      <viewAttribute id="ERROR"><descriptions/><descriptions/>
+        <descriptions defaultDescription="ERROR"/>
+      </viewAttribute>
+      <viewAttribute id="DESC_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DESC_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="HEIGHT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="HEIGHT"/>
+      </viewAttribute>
+      <viewAttribute id="PARTITION"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PARTITION"/>
+      </viewAttribute>
+      <viewAttribute id="SUPPLIER_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="SUPPLIER_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="DIM_UNIT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DIM_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="NODE_KEY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="NODE_KEY"/>
+      </viewAttribute>
+      <viewAttribute id="TAX_TARIF_CODE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="TAX_TARIF_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="DUMMY_FIELD_PD"><descriptions/><descriptions/>
+        <descriptions defaultDescription="DUMMY_FIELD_PD"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_ID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRODUCT_ID"/>
+      </viewAttribute>
+      <viewAttribute id="MEASURE_UNIT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="MEASURE_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="TYPE_CODE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="TYPE_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="WEIGHT_MEASURE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WEIGHT_MEASURE"/>
+      </viewAttribute>
+      <viewAttribute id="CATEGORY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CATEGORY"/>
+      </viewAttribute>
+      <viewAttribute id="WEIGHT_UNIT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WEIGHT_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_BY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CREATED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="CREATED_AT"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CREATED_AT"/>
+      </viewAttribute>
+      <viewAttribute id="PRICE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRICE"/>
+      </viewAttribute>
+      <viewAttribute id="PATH"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PATH"/>
+      </viewAttribute>
+      <viewAttribute id="CHANGED_BY"><descriptions/><descriptions/>
+        <descriptions defaultDescription="CHANGED_BY"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_PIC_URL"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRODUCT_PIC_URL"/>
+      </viewAttribute>
+      <viewAttribute id="NAME"><descriptions/><descriptions/>
+        <descriptions defaultDescription="NAME"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID"/>
+      </viewAttribute>
+      <viewAttribute id="EMPLOYEE_ID_1"><descriptions/><descriptions/>
+        <descriptions defaultDescription="EMPLOYEE_ID_1"/>
+      </viewAttribute>
+      <viewAttribute id="BP_ROLE"><descriptions/><descriptions/>
+        <descriptions defaultDescription="BP_ROLE"/>
+      </viewAttribute>
+      <viewAttribute id="EMAIL_ADDRESS"><descriptions/><descriptions/>
+        <descriptions defaultDescription="EMAIL_ADDRESS"/>
+      </viewAttribute>
+      <viewAttribute id="PHONE_NUMBER"><descriptions/><descriptions/>
+        <descriptions defaultDescription="PHONE_NUMBER"/>
+      </viewAttribute>
+      <viewAttribute id="FAX_NUMBER"><descriptions/><descriptions/>
+        <descriptions defaultDescription="FAX_NUMBER"/>
+      </viewAttribute>
+      <viewAttribute id="WEB_ADDRESS"><descriptions/><descriptions/>
+        <descriptions defaultDescription="WEB_ADDRESS"/>
+      </viewAttribute>
+      <viewAttribute id="BP_ID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="BP_ID"/>
+      </viewAttribute>
+      <viewAttribute id="ADDRESS_GUID"><descriptions/><descriptions/>
+        <descriptions defaultDescription="ADDRESS_GUID"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_EMPL2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_AT" source="CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WIDTH" source="WIDTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ROWNUMBER" source="ROWNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_GUID" source="NAME_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DEPTH" source="DEPTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ERROR" source="ERROR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESC_GUID" source="DESC_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HEIGHT" source="HEIGHT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTITION" source="PARTITION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_GUID" source="SUPPLIER_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIM_UNIT" source="DIM_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NODE_KEY" source="NODE_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAX_TARIF_CODE" source="TAX_TARIF_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DUMMY_FIELD_PD" source="DUMMY_FIELD_PD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MEASURE_UNIT" source="MEASURE_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE_CODE" source="TYPE_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEIGHT_MEASURE" source="WEIGHT_MEASURE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEIGHT_UNIT" source="WEIGHT_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE" source="PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PATH" source="PATH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_PIC_URL" source="PRODUCT_PIC_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID" source="EMPLOYEE_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYEE_ID_1" source="EMPLOYEE_ID_1"/>
+    </input>
+    <input node="SRC.FILE::SNWD_BPA">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BP_ROLE" source="BP_ROLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAIL_ADDRESS" source="EMAIL_ADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PHONE_NUMBER" source="PHONE_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FAX_NUMBER" source="FAX_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEB_ADDRESS" source="WEB_ADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BP_ID" source="BP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_GUID" source="ADDRESS_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_GUID" source="NODE_KEY"/>
+    </input>
+    <joinAttribute name="SUPPLIER_GUID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_BPA">
+  <attributes>
+    <attribute id="NAME_GUID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_GUID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="NAME_GUID"/>
+    </attribute>
+    <attribute id="ERROR" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ERROR"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="ERROR"/>
+    </attribute>
+    <attribute id="DESC_GUID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESC_GUID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="DESC_GUID"/>
+    </attribute>
+    <attribute id="SUPPLIER_GUID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_GUID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="SUPPLIER_GUID"/>
+    </attribute>
+    <attribute id="DIM_UNIT" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIM_UNIT"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="DIM_UNIT"/>
+    </attribute>
+    <attribute id="NODE_KEY" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NODE_KEY"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="NODE_KEY"/>
+    </attribute>
+    <attribute id="DUMMY_FIELD_PD" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DUMMY_FIELD_PD"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="DUMMY_FIELD_PD"/>
+    </attribute>
+    <attribute id="PRODUCT_ID" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_ID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="MEASURE_UNIT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MEASURE_UNIT"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="MEASURE_UNIT"/>
+    </attribute>
+    <attribute id="TYPE_CODE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TYPE_CODE"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="TYPE_CODE"/>
+    </attribute>
+    <attribute id="CATEGORY" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CATEGORY"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CATEGORY"/>
+    </attribute>
+    <attribute id="WEIGHT_UNIT" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEIGHT_UNIT"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="WEIGHT_UNIT"/>
+    </attribute>
+    <attribute id="CREATED_BY" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_BY"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CREATED_BY"/>
+    </attribute>
+    <attribute id="CURRENCY_CODE" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY_CODE"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CURRENCY_CODE"/>
+    </attribute>
+    <attribute id="PATH" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PATH"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="PATH"/>
+    </attribute>
+    <attribute id="CHANGED_BY" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_BY"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="CHANGED_BY"/>
+    </attribute>
+    <attribute id="PRODUCT_PIC_URL" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_PIC_URL"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="PRODUCT_PIC_URL"/>
+    </attribute>
+    <attribute id="NAME" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="NAME"/>
+    </attribute>
+    <attribute id="EMPLOYEE_ID" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_ID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="EMPLOYEE_ID"/>
+    </attribute>
+    <attribute id="EMPLOYEE_ID_1" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYEE_ID_1"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="EMPLOYEE_ID_1"/>
+    </attribute>
+    <attribute id="BP_ROLE" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_ROLE"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="BP_ROLE"/>
+    </attribute>
+    <attribute id="EMAIL_ADDRESS" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAIL_ADDRESS"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="EMAIL_ADDRESS"/>
+    </attribute>
+    <attribute id="PHONE_NUMBER" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PHONE_NUMBER"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="PHONE_NUMBER"/>
+    </attribute>
+    <attribute id="FAX_NUMBER" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FAX_NUMBER"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="FAX_NUMBER"/>
+    </attribute>
+    <attribute id="WEB_ADDRESS" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEB_ADDRESS"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="WEB_ADDRESS"/>
+    </attribute>
+    <attribute id="BP_ID" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_ID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="BP_ID"/>
+    </attribute>
+    <attribute id="ADDRESS_GUID" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRESS_GUID"/>
+      <keyMapping columnObjectName="Join_BPA" columnName="ADDRESS_GUID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="CHANGED_AT" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CHANGED_AT"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="CHANGED_AT"/>
+    </measure>
+    <measure id="WIDTH" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="WIDTH"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="WIDTH"/>
+    </measure>
+    <measure id="ROWNUMBER" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ROWNUMBER"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="ROWNUMBER"/>
+    </measure>
+    <measure id="DEPTH" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="DEPTH"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="DEPTH"/>
+    </measure>
+    <measure id="HEIGHT" order="8" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="HEIGHT"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="HEIGHT"/>
+    </measure>
+    <measure id="PARTITION" order="9" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PARTITION"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="PARTITION"/>
+    </measure>
+    <measure id="TAX_TARIF_CODE" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="TAX_TARIF_CODE"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="TAX_TARIF_CODE"/>
+    </measure>
+    <measure id="WEIGHT_MEASURE" order="18" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="WEIGHT_MEASURE"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="WEIGHT_MEASURE"/>
+    </measure>
+    <measure id="CREATED_AT" order="23" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="CREATED_AT"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="CREATED_AT"/>
+    </measure>
+    <measure id="PRICE" order="24" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="PRICE"/>
+      <measureMapping columnObjectName="Join_BPA" columnName="PRICE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_EMPL1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="268"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_EMPL2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="77" y="247"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_BPA" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="244" y="185"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>  

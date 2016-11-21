@@ -1,0 +1,198 @@
+PROCEDURE "TEST_DB::SIMPLE_LOAD_TEST" ( /* out --> Table "TEST_DB::RESULTS" */ )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+   AS
+BEGIN sequential execution
+
+---- prepare Test
+   truncate table "TEST_DB::RESULTS";
+   commit;
+
+---- clear all staging tables and check if empty
+   call "SRC2STG::STAGING_TRUNCATE_ALL";
+   select 'Truncate Staging tables', '', '', '' from "SYS::DUMMY" 
+     into "TEST_DB::RESULTS";
+   
+   select '  Nr. of records found in "STAGING::SNWD_AD"', '0', (select count(*) from "STAGING::SNWD_AD"), 
+           case when (select count(*) from "STAGING::SNWD_AD") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_BPA?"', '0', (select count(*) from "STAGING::SNWD_BPA"), 
+           case when (select count(*) from "STAGING::SNWD_BPA") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+  select '  Nr. of records found in "STAGING::SNWD_EMPLOYEES?"', '0', (select count(*) from "STAGING::SNWD_EMPLOYEES"), 
+           case when (select count(*) from "STAGING::SNWD_EMPLOYEES") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_PD?"', '0', (select count(*) from "STAGING::SNWD_PD"), 
+           case when (select count(*) from "STAGING::SNWD_PD") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  Nr. of records found in "STAGING::SNWD_PD_CATGOS?"', '0', (select count(*) from "STAGING::SNWD_PD_CATGOS"), 
+           case when (select count(*) from "STAGING::SNWD_PD_CATGOS") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";   
+   select '  Nr. of records found in "STAGING::SNWD_SO?"', '0', (select count(*) from "STAGING::SNWD_SO"), 
+           case when (select count(*) from "STAGING::SNWD_SO") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+       into "TEST_DB::RESULTS";     
+    select '  Nr. of records found in "STAGING::SNWD_SO_I?"', '0', (select count(*) from "STAGING::SNWD_SO_I"), 
+           case when (select count(*) from "STAGING::SNWD_SO_I") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_SO_SL?"', '0', (select count(*) from "STAGING::SNWD_SO_SL"), 
+           case when (select count(*) from "STAGING::SNWD_SO_SL") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  Nr. of records found in "STAGING::SNWD_TEXTS?"', '0', (select count(*) from "STAGING::SNWD_TEXTS"), 
+           case when (select count(*) from "STAGING::SNWD_TEXTS") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";   
+   select '  Nr. of records found in "STAGING::SNWD_TEXT_KEY?"', '0', (select count(*) from "STAGING::SNWD_TEXT_KEY"), 
+           case when (select count(*) from "STAGING::SNWD_TEXT_KEY") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+       into "TEST_DB::RESULTS";      
+       
+---- load all Staging Table and check       
+    call "SRC2STG::SRC_LOAD_ALL";
+    
+   select 'Load data to Staging tables', '', '', '' from "SYS::DUMMY" 
+     into "TEST_DB::RESULTS";
+-- File
+   select '  Nr. of records found in "STAGING::SNWD_AD, FILE "', (select count(*) from "SRC.FILE::SNWD_AD"), (select count(*) from "STAGING::SNWD_AD" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_AD")= (select count(*) from "STAGING::SNWD_AD" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+  select '  Nr. of records found in "STAGING::SNWD_BPA, FILE "', (select count(*) from "SRC.FILE::SNWD_BPA"), (select count(*) from "STAGING::SNWD_BPA" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_BPA")= (select count(*) from "STAGING::SNWD_BPA" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_EMPLOYEES, FILE "', (select count(*) from "SRC.FILE::SNWD_EMPLOYEES"), (select count(*) from "STAGING::SNWD_EMPLOYEES" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_EMPLOYEES")= (select count(*) from "STAGING::SNWD_EMPLOYEES" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_PD, FILE "', (select count(*) from "SRC.FILE::SNWD_PD"), (select count(*) from "STAGING::SNWD_PD" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_PD")= (select count(*) from "STAGING::SNWD_PD" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_PD_CATGOS, FILE "', (select count(*) from "SRC.FILE::SNWD_PD_CATGOS"), (select count(*) from "STAGING::SNWD_PD_CATGOS" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_PD_CATGOS")= (select count(*) from "STAGING::SNWD_PD_CATGOS" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_SO, FILE "', (select count(*) from "SRC.FILE::SNWD_SO"), (select count(*) from "STAGING::SNWD_SO" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_SO")= (select count(*) from "STAGING::SNWD_SO" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_SO_I, FILE "', (select count(*) from "SRC.FILE::SNWD_SO_I"), (select count(*) from "STAGING::SNWD_SO_I" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_SO_I")= (select count(*) from "STAGING::SNWD_SO_I" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_SO_SL, FILE "', (select count(*) from "SRC.FILE::SNWD_SO_SL"), (select count(*) from "STAGING::SNWD_SO_SL" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_SO_SL")= (select count(*) from "STAGING::SNWD_SO_SL" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_TEXTS, FILE "', (select count(*) from "SRC.FILE::SNWD_TEXTS"), (select count(*) from "STAGING::SNWD_TEXTS" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_TEXTS")= (select count(*) from "STAGING::SNWD_TEXTS" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Nr. of records found in "STAGING::SNWD_TEXT_KEY, FILE "', (select count(*) from "SRC.FILE::SNWD_TEXT_KEY"), (select count(*) from "STAGING::SNWD_TEXT_KEY" where logsys = 'FILE'), 
+           case when (select count(*) from "SRC.FILE::SNWD_TEXT_KEY")= (select count(*) from "STAGING::SNWD_TEXT_KEY" where logsys = 'FILE') then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";   
+
+---- clear all the populated shine tables and check if empty   
+   call "STG2SHN::SHINE_TRUNCATE_ALL";
+   
+   select 'Truncate Shine tables', '', '', '' from "SYS::DUMMY" 
+     into "TEST_DB::RESULTS";
+     
+   select '  No records found in "SOI.Item"', '0', (select count(*) from "SOI.Item"), 
+           case when (select count(*) from "SOI.Item") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  No records found in "SOH.Header?"', '0', (select count(*) from "SOH.Header"), 
+           case when (select count(*) from "SOH.Header") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+  select '  No records found in "MD.Addresses?"', '0', (select count(*) from "MD.Addresses"), 
+           case when (select count(*) from "MD.Addresses") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  No records found in "MD.Products?"', '0', (select count(*) from "MD.Products"), 
+           case when (select count(*) from "MD.Products") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  No records found in "MD.Employees?"', '0', (select count(*) from "MD.Employees"), 
+           case when (select count(*) from "MD.Employees") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";   
+   select '  No records found in "MD.BusinessPartner"', '0', (select count(*) from "MD.BusinessPartner"),
+           case when (select count(*) from "MD.BusinessPartner") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS"; 
+     
+   select 'Check Data Mart CalcViews empty', '', '', '' from "SYS::DUMMY" 
+     into "TEST_DB::RESULTS";
+     
+   select '  No records found in "DM::BUYER"', '0', (select count(*) from (select * from "DM::BUYER")), 
+           case when (select count(*) from (select * from "DM::BUYER")) = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  No records found in "DM::PRODUCT"', '0', (select count(*) from (select * from "DM::PRODUCT")), 
+           case when (select count(*) from (select * from "DM::PRODUCT")) = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  No records found in "DM::SALES_DETAILS"', '0', (select count(*) from (select * from "DM::SALES_DETAILS")), 
+           case when (select count(*) from "DM::SALES_DETAILS") = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  No records found in "DM::SO_BASIC"', '0', (select count(*) from (select * from "DM::SO_BASIC")), 
+           case when (select count(*) from (select * from "DM::SO_BASIC")) = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  No records found in "DM::SO_HEADER"', '0', (select count(*) from (select * from "DM::SO_HEADER")), 
+           case when (select count(*) from (select * from  "DM::SO_HEADER")) = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  No records found in "DM::SO_ITEM"', '0', (select count(*) from (select * from "DM::SO_ITEM")), 
+           case when (select count(*) from (select * from  "DM::SO_ITEM")) = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  No records found in "DM::SUPPLIER"', '0', (select count(*) from (select * from "DM::SUPPLIER")), 
+           case when (select count(*) from  (select * from "DM::SUPPLIER")) = 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";       
+           
+     
+---- load all shine tables and check if filled       
+   call "STG2SHN::E2S_LOAD_ALL";
+   select 'Load data to Shine tables', '', '', '' from "SYS::DUMMY" 
+     into "TEST_DB::RESULTS";
+   select '  Records found in "SOI.Item"', '>0', (select count(*) from "SOI.Item"), 
+           case when (select count(*) from "SOI.Item") > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Records found in "SOH.Header?"', '>0', (select count(*) from "SOH.Header"), 
+           case when (select count(*) from "SOH.Header") > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Records found in "MD.Addresses?"', '>0', (select count(*) from "MD.Addresses"), 
+           case when (select count(*) from "MD.Addresses") > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";
+   select '  Records found in "MD.Products?"', '>0', (select count(*) from "MD.Products"), 
+           case when (select count(*) from "MD.Products") > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  Records found in "MD.Employees?"', '>0', (select count(*) from "MD.Employees"), 
+           case when (select count(*) from "MD.Employees") > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";   
+   select '  Records found in "MD.BusinessPartner?"', '>0', (select count(*) from "MD.BusinessPartner"), 
+           case when (select count(*) from "MD.BusinessPartner") > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+       into "TEST_DB::RESULTS";  
+       
+   select 'Check Data Mart CalcViews show data', '', '', '' from "SYS::DUMMY" 
+     into "TEST_DB::RESULTS";
+     
+   select '  Records found in "DM::BUYER"', '>0', (select count(*) from (select * from "DM::BUYER")), 
+           case when (select count(*) from (select * from "DM::BUYER")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  Records found in "DM::PRODUCT"', '>0', (select count(*) from (select * from "DM::PRODUCT")), 
+           case when (select count(*) from (select * from "DM::PRODUCT")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  Records found in "DM::SALES_DETAILS"', '>0', (select count(*) from (select * from "DM::SALES_DETAILS")), 
+           case when (select count(*) from (select * from "DM::SALES_DETAILS")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  Records found in "DM::SO_BASIC"', '>0', (select count(*) from (select * from "DM::SO_BASIC")), 
+           case when (select count(*) from (select * from "DM::SO_BASIC")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  Records found in "DM::SO_HEADER"', '>0', (select count(*) from (select * from "DM::SO_HEADER")), 
+           case when (select count(*) from (select * from "DM::SO_HEADER")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  Records found in "DM::SO_ITEM"', '>0', (select count(*) from (select * from "DM::SO_ITEM")), 
+           case when (select count(*) from (select * from "DM::SO_ITEM")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+   select '  Records found in "DM::SUPPLIER"', '>0', (select count(*) from (select * from "DM::SUPPLIER")), 
+           case when (select count(*) from (select * from "DM::SUPPLIER")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";       
+     
+   select 'Check Data CalcViews on FlatFile-VTs show data', '', '', '' from "SYS::DUMMY" 
+     into "TEST_DB::RESULTS";     
+   select '  Records found in "VT_DM::SO_HEADER"', '>0', (select count(*) from (select * from "VT_DM::SO_HEADER")), 
+           case when (select count(*) from  (select * from "VT_DM::SO_HEADER")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";          
+   select '  Records found in "VT_DM::SO_ITEM"', '>0', (select count(*) from (select * from "VT_DM::SO_ITEM")), 
+           case when (select count(*) from  (select * from "VT_DM::SO_ITEM")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";          
+      select '  Records found in stacked CV "VT_DM::SO_ITEM_PD"', '>0', (select count(*) from (select * from "VT_DM::SO_ITEM_PD")), 
+           case when (select count(*) from  (select * from "VT_DM::SO_ITEM_PD")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";          
+   select '  Records found in "VT_DM::PRODUCT"', '>0', (select count(*) from (select * from "VT_DM::PRODUCT")), 
+           case when (select count(*) from  (select * from "VT_DM::PRODUCT")) > 0 then 'ok' else 'error' end from "SYS::DUMMY"
+     into "TEST_DB::RESULTS";     
+END;
+

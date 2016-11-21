@@ -1,0 +1,18 @@
+{
+	"role": {
+		"name": "SELECT_CV_WITH_GRANT#",
+		"object_privileges": [{
+			"name": "VT_DM::SO_ITEM",
+			"type": "VIEW",
+			"privileges_with_grant_option": ["SELECT"]
+		}, {
+			"name": "VT_DM::PRODUCT",
+			"type": "VIEW",
+			"privileges_with_grant_option": ["SELECT"]
+		}, {
+			"name": "VT_DM::SO_HEADER",
+			"type": "VIEW",
+			"privileges_with_grant_option": ["SELECT"]
+		}]
+	}
+}

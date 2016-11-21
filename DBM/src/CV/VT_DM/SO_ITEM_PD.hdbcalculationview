@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="VT_DM::SO_ITEM_PD" applyPrivilegeType="NONE" dataCategory="CUBE" dimensionType="" schemaVersion="3.0" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="SO_ITEM, stacked, with Product Cat."/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="VT_DM::SO_ITEM">
+    <resourceUri>VT_DM::SO_ITEM</resourceUri>
+  </DataSource>
+  <DataSource id="SRC.FILE::SNWD_PD_CATGOS">
+    <resourceUri>SRC.FILE::SNWD_PD_CATGOS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="SO_ID"><descriptions/>
+        <descriptions defaultDescription="SO_ID"/>
+      </viewAttribute>
+      <viewAttribute id="SO_ITEM_POS"><descriptions/>
+        <descriptions defaultDescription="SO_ITEM_POS"/>
+      </viewAttribute>
+      <viewAttribute id="OP_ITEM_POS"><descriptions/>
+        <descriptions defaultDescription="OP_ITEM_POS"/>
+      </viewAttribute>
+      <viewAttribute id="BILLING_STATUS"><descriptions/>
+        <descriptions defaultDescription="BILLING_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="DELIVERY_STATUS"><descriptions/>
+        <descriptions defaultDescription="DELIVERY_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="DELIVERY_DATE" aggregationType="min"><descriptions/>
+        <descriptions defaultDescription="DELIVERY_DATE"/>
+      </viewAttribute>
+      <viewAttribute id="CATEGORY"><descriptions/>
+        <descriptions defaultDescription="CATEGORY"/>
+      </viewAttribute>
+      <viewAttribute id="MAIN_CATEGORY"><descriptions/>
+        <descriptions defaultDescription="MAIN_CATEGORY"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="GROSS_AMOUNT" aggregationType="min"><descriptions/>
+        <descriptions defaultDescription="GROSS_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="NET_AMOUNT" aggregationType="min"><descriptions/>
+        <descriptions defaultDescription="NET_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="TAX_AMOUNT" aggregationType="min"><descriptions/>
+        <descriptions defaultDescription="TAX_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="QUANTITY_UNIT"><descriptions/>
+        <descriptions defaultDescription="QUANTITY_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="QUANTITY" aggregationType="sum"><descriptions/>
+        <descriptions defaultDescription="QUANTITY"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="VT_DM::SO_ITEM">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ID" source="SO_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ITEM_POS" source="SO_ITEM_POS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OP_ITEM_POS" source="OP_ITEM_POS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLING_STATUS" source="BILLING_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_STATUS" source="DELIVERY_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROSS_AMOUNT" source="GROSS_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NET_AMOUNT" source="NET_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAX_AMOUNT" source="TAX_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTITY_UNIT" source="QUANTITY_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTITY" source="QUANTITY"/>
+    </input>
+    <input node="SRC.FILE::SNWD_PD_CATGOS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MAIN_CATEGORY" source="MAIN_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+    </input>
+    <joinAttribute name="CATEGORY"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="SO_ID" keepFlag="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SO_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="SO_ID"/>
+    </attribute>
+    <attribute id="SO_ITEM_POS" keepFlag="true" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SO_ITEM_POS"/>
+      <keyMapping columnObjectName="Join_1" columnName="SO_ITEM_POS"/>
+    </attribute>
+    <attribute id="OP_ITEM_POS" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OP_ITEM_POS"/>
+      <keyMapping columnObjectName="Join_1" columnName="OP_ITEM_POS"/>
+    </attribute>
+    <attribute id="BILLING_STATUS" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLING_STATUS"/>
+      <keyMapping columnObjectName="Join_1" columnName="BILLING_STATUS"/>
+    </attribute>
+    <attribute id="DELIVERY_STATUS" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERY_STATUS"/>
+      <keyMapping columnObjectName="Join_1" columnName="DELIVERY_STATUS"/>
+    </attribute>
+    <attribute id="CATEGORY" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CATEGORY"/>
+      <keyMapping columnObjectName="Join_1" columnName="CATEGORY"/>
+    </attribute>
+    <attribute id="MAIN_CATEGORY" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MAIN_CATEGORY"/>
+      <keyMapping columnObjectName="Join_1" columnName="MAIN_CATEGORY"/>
+    </attribute>
+    <attribute id="CURRENCY_CODE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY_CODE"/>
+      <keyMapping columnObjectName="Join_1" columnName="CURRENCY_CODE"/>
+    </attribute>
+    <attribute id="QUANTITY_UNIT" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUANTITY_UNIT"/>
+      <keyMapping columnObjectName="Join_1" columnName="QUANTITY_UNIT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="DELIVERY_DATE" order="6" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="DELIVERY_DATE"/>
+      <measureMapping columnObjectName="Join_1" columnName="DELIVERY_DATE"/>
+    </measure>
+    <measure id="GROSS_AMOUNT" order="10" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="GROSS_AMOUNT"/>
+      <measureMapping columnObjectName="Join_1" columnName="GROSS_AMOUNT"/>
+    </measure>
+    <measure id="NET_AMOUNT" order="11" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="NET_AMOUNT"/>
+      <measureMapping columnObjectName="Join_1" columnName="NET_AMOUNT"/>
+    </measure>
+    <measure id="TAX_AMOUNT" order="12" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="TAX_AMOUNT"/>
+      <measureMapping columnObjectName="Join_1" columnName="TAX_AMOUNT"/>
+    </measure>
+    <measure id="QUANTITY" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="QUANTITY"/>
+      <measureMapping columnObjectName="Join_1" columnName="QUANTITY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="96" y="112"/>
+    
+      <rectangleSize width="140"/>
+    </shape>
+  
+    <shape expanded="false" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="148"/>
+    </shape>
+    <shape modelObjectName="VT_DM::SO_ITEM" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="16" y="16"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="SRC.FILE::SNWD_PD_CATGOS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="363" y="16"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

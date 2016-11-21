@@ -1,0 +1,22 @@
+context FILTER {
+   // Constants
+
+   // Types
+
+   // Structured Types
+
+   // Entities
+   entity Filter {
+      key MODEL: String(30);
+      key COLNAME: String(8);
+      COLVALUE: String(8);
+   } technical configuration {
+      column store;
+   };
+
+
+   // Views
+
+   // Inner Contexts
+
+};

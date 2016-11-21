@@ -1,0 +1,31 @@
+FUNCTION "STG2SHN::E2S_MAP_SO_NR" (SO_NO_in nvarchar(10), LOGSYS nvarchar(10) ) 
+	RETURNS SO_NO_out nvarchar(10)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER AS
+BEGIN
+declare invalid_SO_NO condition;
+declare invalid_LOGSYS condition;
+-- chech that first digit of SO-Number is zero
+so_no_out:= lpad(so_no_in, 10, '0');
+if left(so_no_out, 1) <> '0'
+  then signal invalid_so_no SET message_text = 'Invalid SO Number ' || SO_NO_IN || ', must start with 0';
+end if;
+
+so_no_out:= case logsys
+              when 'DB2   10.5'
+                then '1' || right(so_no_out, 9)
+              when 'ORACLE 11g'
+                then '2' || right(so_no_out, 9)
+              when 'MSSQL'
+                then '3' || right(so_no_out, 9)
+              when 'FILE'
+                then '4' || right(so_no_out, 9) 
+             -- insert more cases hier                
+              else 'X' || right(so_no_out, 9)
+            end;
+                
+if left(so_no_out, 1) = 'X'
+   then signal invalid_logsys set message_text = 'Invalid Logsys ' || logsys;
+end if;
+   
+END;

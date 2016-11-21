@@ -1,0 +1,14 @@
+{
+	"grantor-service": {
+		"object_owner": {
+			"roles": [
+				"hdi::remote_sources::deploy_virtual"
+			]
+		},
+		"application_user": {
+			"roles": [
+				"hdi::remote_sources::deploy_virtual"
+			]
+		}
+	}
+}

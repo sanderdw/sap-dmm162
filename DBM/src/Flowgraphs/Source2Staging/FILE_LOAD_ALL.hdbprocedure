@@ -1,0 +1,16 @@
+PROCEDURE "SRC2STG::FILE_LOAD_ALL"
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER
+AS
+BEGIN
+	start task  "SRC2STG::FILE_SNWD_AD" ;
+	start task  "SRC2STG::FILE_SNWD_BPA" ;
+	start task  "SRC2STG::FILE_SNWD_EMPLOYEES" ;
+	start task  "SRC2STG::FILE_SNWD_PD" ;	
+	start task  "SRC2STG::FILE_SNWD_PD_CATGOS" ;
+	start task  "SRC2STG::FILE_SNWD_SO" ;	
+	start task  "SRC2STG::FILE_SNWD_SO_I" ;	
+	start task  "SRC2STG::FILE_SNWD_SO_SL" ;	
+	start task  "SRC2STG::FILE_SNWD_TEXTS" ;	
+	start task  "SRC2STG::FILE_SNWD_TEXT_KEY" ;
+END;

@@ -1,0 +1,21 @@
+_schema-version: 2.0.0
+ID: DMM162
+version: 0.0.1
+
+modules:
+- name: DBM
+  type: hdb
+  path: DBM
+  requires:
+   - name: hdi-container
+     properties:
+      TARGET_CONTAINER: hdi-container 
+   - name: grantor-service
+
+resources:
+  - name: hdi-container
+    type: com.sap.xs.hdi-container
+  - name: shinevertical_uaa                           
+    type: com.sap.xs.uaa  
+  - name: grantor-service
+    type: org.cloudfoundry.existing-service

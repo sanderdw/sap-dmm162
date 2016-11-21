@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="VT_DM::SO_ITEM" applyPrivilegeType="NONE" dataCategory="CUBE" dimensionType="" schemaVersion="3.0" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="true">
+<descriptions defaultDescription="SO_ITEM"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SRC.FILE::SNWD_SO_I">
+    <resourceUri>SRC.FILE::SNWD_SO_I</resourceUri>
+  </DataSource>
+  <DataSource id="SRC.FILE::SNWD_SO">
+    <resourceUri>SRC.FILE::SNWD_SO</resourceUri>
+  </DataSource>
+  <DataSource id="SRC.FILE::SNWD_PD">
+    <resourceUri>SRC.FILE::SNWD_PD</resourceUri>
+  </DataSource>
+  <DataSource id="SRC.FILE::SNWD_SO_SL">
+    <resourceUri>SRC.FILE::SNWD_SO_SL</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_SO" joinType="inner" cardinality="CN_1">
+    <viewAttributes>
+      <viewAttribute id="SO_ID"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="SO_ID"/>
+      </viewAttribute>
+      <viewAttribute id="SO_ITEM_POS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="SO_ITEM_POS"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_GUID"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRODUCT_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="GROSS_AMOUNT"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="GROSS_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="NET_AMOUNT"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="NET_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="TAX_AMOUNT"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="TAX_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="OP_ITEM_POS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="OP_ITEM_POS"/>
+      </viewAttribute>
+      <viewAttribute id="BILLING_STATUS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="BILLING_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="DELIVERY_STATUS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="DELIVERY_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="NODE_KEY_I"><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="NODE_KEY"/>
+      </viewAttribute>
+      <viewAttribute id="JOIN$PARENT_KEY$NODE_KEY" hidden="true"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SRC.FILE::SNWD_SO_I">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ITEM_POS" source="SO_ITEM_POS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_GUID" source="PRODUCT_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROSS_AMOUNT" source="GROSS_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NET_AMOUNT" source="NET_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAX_AMOUNT" source="TAX_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OP_ITEM_POS" source="OP_ITEM_POS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NODE_KEY_I" source="NODE_KEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PARENT_KEY$NODE_KEY" source="PARENT_KEY"/>
+    </input>
+    <input node="SRC.FILE::SNWD_SO">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ID" source="SO_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLING_STATUS" source="BILLING_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_STATUS" source="DELIVERY_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$PARENT_KEY$NODE_KEY" source="NODE_KEY"/>
+    </input>
+    <joinAttribute name="JOIN$PARENT_KEY$NODE_KEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_PROD" joinType="inner">
+    <descriptions>
+      <comment text=""/>
+    </descriptions>
+    <viewAttributes>
+      <viewAttribute id="SO_ID"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="SO_ID"/>
+      </viewAttribute>
+      <viewAttribute id="SO_ITEM_POS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="SO_ITEM_POS"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_GUID"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRODUCT_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="GROSS_AMOUNT"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="GROSS_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="NET_AMOUNT"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="NET_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="TAX_AMOUNT"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="TAX_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="OP_ITEM_POS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="OP_ITEM_POS"/>
+      </viewAttribute>
+      <viewAttribute id="BILLING_STATUS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="BILLING_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="DELIVERY_STATUS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="DELIVERY_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="CATEGORY"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="CATEGORY"/>
+      </viewAttribute>
+    
+      <viewAttribute id="NODE_KEY_I"><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="NODE_KEY_I"/>
+      </viewAttribute>
+    
+      <viewAttribute id="PRODUCT_ID">
+        <descriptions defaultDescription="PRODUCT_ID"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_SO">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ID" source="SO_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ITEM_POS" source="SO_ITEM_POS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_GUID" source="PRODUCT_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROSS_AMOUNT" source="GROSS_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NET_AMOUNT" source="NET_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAX_AMOUNT" source="TAX_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OP_ITEM_POS" source="OP_ITEM_POS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLING_STATUS" source="BILLING_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_STATUS" source="DELIVERY_STATUS"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NODE_KEY_I" source="NODE_KEY_I"/>
+    </input>
+    <input node="SRC.FILE::SNWD_PD">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_GUID" source="NODE_KEY"/>
+    </input>
+    <joinAttribute name="PRODUCT_GUID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_SO_SL" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="SO_ID"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="SO_ID"/>
+      </viewAttribute>
+      <viewAttribute id="SO_ITEM_POS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="SO_ITEM_POS"/>
+      </viewAttribute>
+      <viewAttribute id="PRODUCT_GUID"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="PRODUCT_GUID"/>
+      </viewAttribute>
+      <viewAttribute id="CURRENCY_CODE"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="CURRENCY_CODE"/>
+      </viewAttribute>
+      <viewAttribute id="GROSS_AMOUNT"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="GROSS_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="NET_AMOUNT"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="NET_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="TAX_AMOUNT"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="TAX_AMOUNT"/>
+      </viewAttribute>
+      <viewAttribute id="OP_ITEM_POS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="OP_ITEM_POS"/>
+      </viewAttribute>
+      <viewAttribute id="BILLING_STATUS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="BILLING_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="DELIVERY_STATUS"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="DELIVERY_STATUS"/>
+      </viewAttribute>
+      <viewAttribute id="CATEGORY"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="CATEGORY"/>
+      </viewAttribute>
+      <viewAttribute id="DELIVERY_DATE"><descriptions/><descriptions/><descriptions/><descriptions/><descriptions/>
+        <descriptions defaultDescription="DELIVERY_DATE"/>
+      </viewAttribute>
+      <viewAttribute id="QUANTITY_UNIT">
+        <descriptions defaultDescription="QUANTITY_UNIT"/>
+      </viewAttribute>
+      <viewAttribute id="QUANTITY">
+        <descriptions defaultDescription="QUANTITY"/>
+      </viewAttribute>
+      <viewAttribute id="JOIN$NODE_KEY_I$PARENT_KEY" hidden="true"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_PROD">
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ID" source="SO_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SO_ITEM_POS" source="SO_ITEM_POS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_GUID" source="PRODUCT_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CURRENCY_CODE" source="CURRENCY_CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROSS_AMOUNT" source="GROSS_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NET_AMOUNT" source="NET_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TAX_AMOUNT" source="TAX_AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OP_ITEM_POS" source="OP_ITEM_POS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BILLING_STATUS" source="BILLING_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_STATUS" source="DELIVERY_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$NODE_KEY_I$PARENT_KEY" source="NODE_KEY_I"/>
+    </input>
+    <input node="SRC.FILE::SNWD_SO_SL">
+      <mapping xsi:type="Calculation:AttributeMapping" target="DELIVERY_DATE" source="DELIVERY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTITY_UNIT" source="QUANTITY_UNIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUANTITY" source="QUANTITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$NODE_KEY_I$PARENT_KEY" source="PARENT_KEY"/>
+    </input>
+    <joinAttribute name="JOIN$NODE_KEY_I$PARENT_KEY"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_SO_SL">
+  <attributes>
+    <attribute id="SO_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SO_ID"/>
+      <keyMapping columnObjectName="Join_SO_SL" columnName="SO_ID"/>
+    </attribute>
+    <attribute id="SO_ITEM_POS" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SO_ITEM_POS"/>
+      <keyMapping columnObjectName="Join_SO_SL" columnName="SO_ITEM_POS"/>
+    </attribute>
+    <attribute id="OP_ITEM_POS" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OP_ITEM_POS"/>
+      <keyMapping columnObjectName="Join_SO_SL" columnName="OP_ITEM_POS"/>
+    </attribute>
+    <attribute id="CURRENCY_CODE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY_CODE"/>
+      <keyMapping columnObjectName="Join_SO_SL" columnName="CURRENCY_CODE"/>
+    </attribute>
+    <attribute id="BILLING_STATUS" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BILLING_STATUS"/>
+      <keyMapping columnObjectName="Join_SO_SL" columnName="BILLING_STATUS"/>
+    </attribute>
+    <attribute id="DELIVERY_STATUS" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DELIVERY_STATUS"/>
+      <keyMapping columnObjectName="Join_SO_SL" columnName="DELIVERY_STATUS"/>
+    </attribute>
+    <attribute id="CATEGORY" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CATEGORY"/>
+      <keyMapping columnObjectName="Join_SO_SL" columnName="CATEGORY"/>
+    </attribute>
+    <attribute id="QUANTITY_UNIT" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUANTITY_UNIT"/>
+      <keyMapping columnObjectName="Join_SO_SL" columnName="QUANTITY_UNIT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="GROSS_AMOUNT" order="5" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="GROSS_AMOUNT"/>
+      <measureMapping columnObjectName="Join_SO_SL" columnName="GROSS_AMOUNT"/>
+    </measure>
+    <measure id="NET_AMOUNT" order="6" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="NET_AMOUNT"/>
+      <measureMapping columnObjectName="Join_SO_SL" columnName="NET_AMOUNT"/>
+    </measure>
+    <measure id="TAX_AMOUNT" order="7" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="TAX_AMOUNT"/>
+      <measureMapping columnObjectName="Join_SO_SL" columnName="TAX_AMOUNT"/>
+    </measure>
+    <measure id="DELIVERY_DATE" order="11" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="DELIVERY_DATE"/>
+      <measureMapping columnObjectName="Join_SO_SL" columnName="DELIVERY_DATE"/>
+    </measure>
+  
+    <measure id="QUANTITY" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="QUANTITY"/>
+      <measureMapping columnObjectName="Join_SO_SL" columnName="QUANTITY"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="140"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_SO" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="457"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="SRC.FILE::SNWD_SO_I" modelObjectNameSpace="Join_SO" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="SRC.FILE::SNWD_SO" modelObjectNameSpace="Join_SO" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_PROD" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="337"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_SO" modelObjectNameSpace="Join_PROD" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="SRC.FILE::SNWD_PD" modelObjectNameSpace="Join_PROD" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_SO_SL" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="Join_PROD" modelObjectNameSpace="Join_SO_SL" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="SRC.FILE::SNWD_SO_SL" modelObjectNameSpace="Join_SO_SL" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>  

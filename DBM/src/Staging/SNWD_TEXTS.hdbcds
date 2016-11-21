@@ -1,0 +1,11 @@
+namespace STAGING;
+entity SNWD_TEXTS {
+   key LOGSYS: String(10) default '000';
+   key NODE_KEY: Binary(16);
+   PARENT_KEY: Binary(16);
+   LANGUAGE: String(1) default '' not null;
+   TEXT: String(255) default '' not null;
+   _DATAAGING: String(8) default '00000000' not null;
+} technical configuration {
+   column store;
+};

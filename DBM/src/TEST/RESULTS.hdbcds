@@ -1,0 +1,7 @@
+namespace "TEST_DB";
+entity RESULTS {
+   key test_case: String(80);
+   expected_result: String(20);
+   result: String(20);
+   status: String(5);
+};

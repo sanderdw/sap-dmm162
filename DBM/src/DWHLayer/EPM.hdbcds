@@ -1,0 +1,44 @@
+context EPM {
+   // Constants
+
+   // Types
+   type ABAPDate: hana.NCHAR(8);
+   type ABAPLanguage: hana.VARCHAR(1);
+   type AmountT: Decimal(15,2);
+   type BusinessKey: hana.VARCHAR(10);
+   type CurrencyT: hana.VARCHAR(5);
+   type ISOLanguageT: hana.NCHAR(2);
+   type LString: hana.VARCHAR(255);
+   type MString: hana.VARCHAR(60);
+   type PhoneT: hana.VARCHAR(30);
+   type QuantityT: Decimal(13,3);
+   type Source: hana.NCHAR(30);
+   type SString: hana.VARCHAR(40);
+   type StatusT: hana.VARCHAR(1);
+   type UnitT: hana.VARCHAR(3);
+   type VLString: hana.VARCHAR(1024);
+   type SDate: LocalDate;
+
+   // Structured Types
+   table type ValidityT {
+      STARTDATE: LocalDate;
+      ENDDATE: LocalDate;
+   };
+
+   // Entities
+   entity MapKeys {
+      key KEYID: String(10);
+      APP_ID: String(50);
+      APP_CODE: String(50);
+      EXT1: String(50);
+      EXT2: String(50);
+   } technical configuration {
+      column store;
+   };
+
+
+   // Views
+
+   // Inner Contexts
+
+};

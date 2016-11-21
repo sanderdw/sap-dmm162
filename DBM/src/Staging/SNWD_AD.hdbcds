@@ -1,0 +1,17 @@
+namespace STAGING;
+entity SNWD_AD {
+   key LOGSYS: String(10) default '000';
+   key NODE_KEY: Binary(16);
+   CITY: String(40) default '' not null;
+   POSTAL_CODE: String(10) default '' not null;
+   STREET: String(60) default '' not null;
+   BUILDING: String(10) default '' not null;
+   COUNTRY: String(3) default '' not null;
+   ADDRESS_TYPE: String(2) default '' not null;
+   VAL_START_DATE: String(8) default '00000000' not null;
+   VAL_END_DATE: String(8) default '00000000' not null;
+   LATITUDE: Decimal(15,12) default 0 not null;
+   LONGITUDE: Decimal(15,12) default 0 not null;
+} technical configuration {
+   column store;
+};
